@@ -20,19 +20,33 @@ public class Brad18C extends HttpServlet {
 		String x = request.getParameter("x");
 		String y = request.getParameter("y");
 		
-		// 2. 演算法
-		try {
-			Brad19M model = new Brad19M(x, y);
-			int result = model.plus();
+		if (x != null && y != null) {
 			
-			request.setAttribute("x", x);
-			request.setAttribute("y", y);
-			request.setAttribute("result", result);
+			// 2. 演算法
+			try {
+				Brad19M model = new Brad19M(x, y);
+				int result = model.plus();
+				
+				request.setAttribute("x", x);
+				request.setAttribute("y", y);
+				request.setAttribute("result", result+"");
+				request.setAttribute("view", "view2");
+				
+				// 3. 呈現 View
+				RequestDispatcher dispatcher = request.getRequestDispatcher("Brad20V");
+				dispatcher.forward(request, response);
+			}catch(Exception e) {
+				System.out.println(e);
+			}
+		}else {
+			request.setAttribute("x", "");
+			request.setAttribute("y", "");
+			request.setAttribute("result", "");
+			request.setAttribute("view", "view1");
 			
 			// 3. 呈現 View
 			RequestDispatcher dispatcher = request.getRequestDispatcher("Brad20V");
 			dispatcher.forward(request, response);
-		}catch(Exception e) {
 			
 		}
 		
