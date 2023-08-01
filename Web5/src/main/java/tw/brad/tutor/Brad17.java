@@ -9,27 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import tw.brad.apis.Bike;
-
-@WebServlet("/Brad15")
-public class Brad15 extends HttpServlet {
+@WebServlet("/Brad17")
+public class Brad17 extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		int max = 0;
-		try {
-			max = Integer.parseInt(request.getParameter("max"));
-		}catch(Exception e) {}
-		
 		PrintWriter out = response.getWriter();
-		out.print((int)(Math.random()*max+1));
-		out.println("<hr />");
-		
-		Object obj = request.getAttribute("b1");
-		Bike b1 = (Bike)obj;
-		
-		out.print(b1);
-		
-	
+		out.println("<h1>Brad Company17</h1>");
 	}
 
 }
