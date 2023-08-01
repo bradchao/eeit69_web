@@ -12,7 +12,7 @@ import javax.servlet.http.Part;
 
 @WebServlet("/Brad09")
 @MultipartConfig(
-		location = "C:\\Users\\User\\eclipse-workspace\\Web5\\src\\main\\webapp\\upload"
+		location = "C:\\Users\\User\\git\\repository_eeit69_web\\Web5\\src\\main\\webapp\\upload"
 		)
 public class Brad09 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
