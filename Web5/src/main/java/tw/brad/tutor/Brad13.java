@@ -35,6 +35,7 @@ public class Brad13 extends HttpServlet {
 			String s = str.substring(i, i+1);
 			double ang = Math.random()*60 - 30;
 			tran.rotate(Math.toRadians(ang));
+			//tran.rotate(Math.toRadians(30));
 			Font font2 = font.deriveFont(tran);
 			g2d.setFont(font2);
 			g2d.drawString(s, 100 + (i*40), 200);
