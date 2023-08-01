@@ -32,10 +32,15 @@ public class Brad10 extends HttpServlet {
 			
 			System.out.println(part.getSubmittedFileName() + ":" + part.getContentType() + ":" + part.getSize() );
 			if (part.getContentType() != null && part.getSize() > 0) {
-				part.write(getUploadName(ip, part.getSubmittedFileName(), i++));
+				part.write(getUploadNameV2(ip, part.getSubmittedFileName(), i++));
 				//System.out.println(getUploadName(ip, part.getSubmittedFileName(), i++));
+				//part.write(part.getSubmittedFileName());
 			}
 		}
+	}
+	
+	private String getUploadNameV2(String ip, String sname, int index) {
+		return ip + "_" + index + "_" + sname;
 	}
 	
 	private String getUploadName(String ip, String sname, int index) {
@@ -46,7 +51,7 @@ public class Brad10 extends HttpServlet {
 			subname = "." + snames[snames.length - 1];
 		}
 		
-		return ip + "_" + index + subname;
+		return "" + ip + "_" + index + subname;
 	}
 
 }
