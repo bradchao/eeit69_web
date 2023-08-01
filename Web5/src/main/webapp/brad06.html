@@ -1,0 +1,16 @@
+<script>
+	function add(){
+		var x = document.getElementById("x").value;
+		var y = document.getElementById("y").value;
+		var r = parseInt(x) + parseInt(y);
+		document.getElementById('result').innerHTML = r;
+	}
+</script>
+
+<form>
+	<input id="x">
+	+
+	<input id="y">
+	<input type="button" value="=" onclick="add()">
+	<span id="result"></span>
+</form>
