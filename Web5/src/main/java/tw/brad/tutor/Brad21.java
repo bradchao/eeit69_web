@@ -30,6 +30,8 @@ public class Brad21 extends HttpServlet {
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if (conn == null) return;
+		
 		try {
 			String sql = "INSERT INTO cust (cname,tel,birthday)" + 
 				" VALUES ('servlet2', '222','1999-02-03')";
