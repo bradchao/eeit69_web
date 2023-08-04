@@ -1,0 +1,1 @@
+jakarta.servlet.ServletException: java.lang.NoClassDefFoundError: javax/servlet/jsp/tagext/TagLibraryValidator org.apache.jasper.servlet.JspServlet.service(JspServlet.java:333) jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
