@@ -64,4 +64,8 @@ public class BradUtils {
 		return new Member(123, "iii", "III", "1999-09-08");
 	}
 	
+	public static String createScore() {
+		return (int)(Math.random()*101)+"";
+	}
+	
 }
