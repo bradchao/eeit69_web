@@ -13,13 +13,19 @@
 	SELECT * FROM foods
 </sql:query>
 
-<c:set var="rpp">10</c:set>
+<c:set var="rpp">7</c:set>
 <c:set var="pages">
 ${rs.rowCount % rpp == 0 ? rs.rowCount / rpp : ((rs.rowCount - (rs.rowCount % rpp)) / rpp + 1) }
 </c:set>
 <c:set var="page">${param.page == null ? 1 : param.page }</c:set>
 <c:set var="prev">${BradUtils.prevPage(page) }</c:set>
 <c:set var="next">${BradUtils.nextPage(page, pages) }</c:set>
+<c:set var="start">${(page - 1) * rpp }</c:set>
+
+<sql:query var="rs2">
+	SELECT * FROM foods LIMIT ${start }, ${rpp }
+</sql:query>
+
 
 <!DOCTYPE html>
 <html>
@@ -37,7 +43,7 @@ ${rs.rowCount % rpp == 0 ? rs.rowCount / rpp : ((rs.rowCount - (rs.rowCount % rp
 				<th>#</th>
 				<th>Name</th>
 			</tr>
-			<c:forEach items="${rs.rows }" var="row">
+			<c:forEach items="${rs2.rows }" var="row">
 				<tr>
 					<td>${row.id }</td>
 					<td>${row.name }</td>
