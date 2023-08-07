@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="tw.brad.apis.*" %>    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <sql:setDataSource
@@ -13,6 +14,12 @@
 </sql:query>
 
 <c:set var="rpp">10</c:set>
+<c:set var="pages">
+${rs.rowCount % rpp == 0 ? rs.rowCount / rpp : ((rs.rowCount - (rs.rowCount % rpp)) / rpp + 1) }
+</c:set>
+<c:set var="page">${param.page == null ? 1 : param.page }</c:set>
+<c:set var="prev">${BradUtils.prevPage(page) }</c:set>
+<c:set var="next">${BradUtils.nextPage(page, pages) }</c:set>
 
 <!DOCTYPE html>
 <html>
@@ -21,7 +28,9 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<a href="">上頁</a> | <a href="">下頁</a>
+		總筆數: ${rs.rowCount }<br />
+		目前頁數/總頁數: ${page } / ${pages }<br />
+		<a href="?page=${prev }">上頁</a> | <a href="?page=${next }">下頁</a>
 		<hr /> 
 		<table border="1" width="100%">
 			<tr>
