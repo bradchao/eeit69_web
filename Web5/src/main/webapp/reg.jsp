@@ -78,7 +78,7 @@
 		<input type="button" value="Test1" onclick="test1()" /><br />
 		<div id="here"></div>
 		<hr />
-		<form method="post" action="brad54.jsp" onsubmit="return verifyForm();">
+		<form method="post" onsubmit="return verifyForm();">
 			Account: <input type="text" id="account" name="account" onblur="checkAccount()" />
 			<span id="mesg"></span><br /> 
 			Password: <input type="password" name="passwd" /><br /> 
