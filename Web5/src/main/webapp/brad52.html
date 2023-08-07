@@ -1,12 +1,56 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" >
-
-</script>
 <!DOCTYPE html>
 <html>
 	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js">
+		</script>
+		<script>
+			function test1(){
+				$('#id1').load("brad53.jsp?max=" + $('#max').val());
+			}
+			function test2(){
+				$.get("brad53.jsp?max=" + $('#max').val(), 
+					function(data, status){
+						if (status == 'success'){
+							$('#id1').html(data);
+						}
+				});
+			}
+			function test3(){
+				$.post("brad53.jsp",
+					{
+						"max" : $('#max').val()
+					},
+					function(data, status){
+						if (status == 'success'){
+							$('#id1').html(data);
+						}
+				});
+			}
+			
+			function test4(){
+				$.ajax({
+					url: "brad53.jsp",
+					method : "post",
+					data : {
+						"max" : $('#max').val()
+					},
+					success: function(res){
+						$('#id1').html(res);
+					}
+				});
+			}
+			
+		</script>
+		
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 	</head>
 	<body>
+		<input type="number" id="max" /><br />
+		<button onclick="test1()">Test1</button><br />
+		<button onclick="test2()">Test2</button><br />
+		<button onclick="test3()">Test3</button><br />
+		<button onclick="test4()">Test4</button><br />
+		<div id="id1"></div>
 	</body>
 </html>
