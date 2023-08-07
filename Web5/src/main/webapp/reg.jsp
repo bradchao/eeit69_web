@@ -11,6 +11,7 @@
 	xhttp.onload = callback; 
 	function callback(){
 		console.log("callback()")
+		document.getElementById("mesg").innerHTML = xhttp.responseText;
 	}
 	
 	function test1(){
@@ -37,7 +38,8 @@
 		<div id="here"></div>
 		<hr />
 		<form method="post">
-			Account: <input type="text" id="account" name="account" onblur="checkAccount()" /><br /> 
+			Account: <input type="text" id="account" name="account" onblur="checkAccount()" />
+			<span id="mesg"></span><br /> 
 			Password: <input type="password" name="passwd" /><br /> 
 			Realname: <input type="text" name="cname" /><br /> 
 			<input type="submit" value="Register" />
