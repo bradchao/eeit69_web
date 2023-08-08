@@ -1,5 +1,6 @@
 package tw.brad.tutor;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -9,6 +10,10 @@ import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+
+import org.json.JSONObject;
+
+import netscape.javascript.JSObject;
 
 @ServerEndpoint(value = "/myserver")
 public class MyServer {
@@ -37,7 +42,31 @@ public class MyServer {
 	
 	@OnMessage
 	public void onMessage(String message, Session session) {
-		
+		System.out.println(session.getId() + ":" + message);
+	
+		JSONObject root = new JSONObject(message);
+		if (root.getInt("mode") == 1) {
+			userNames.put(session.getId(),
+					root.getString("user"));
+		}else if (root.getInt("mode") == 2) {
+			String mesg = root.getString("message");
+			
+			JSONObject jsonObj = new JSONObject();
+			jsonObj.put("user", userNames.get(session.getId()));
+			jsonObj.put("message", mesg);
+			
+			for (Session userSession : sessions) {
+				try {
+					userSession.getBasicRemote()
+						.sendText(jsonObj.toString());
+				} catch (IOException e) {
+					System.out.println(e);
+				}
+			}
+			
+			
+		}
+	
 	}
 	
 	@OnClose
