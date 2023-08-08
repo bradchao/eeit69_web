@@ -28,7 +28,7 @@ public class MyServer {
 	@OnOpen
 	public void onOpen(Session session) {
 		System.out.println("onOpen():" + session.getId());
-		session.setMaxIdleTimeout(10*60*1000);
+		session.setMaxIdleTimeout(2*60*1000);
 		if (sessions.add(session)) {
 			users.put(session.getId(), session);
 		}
