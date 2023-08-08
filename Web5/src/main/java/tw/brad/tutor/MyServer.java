@@ -48,6 +48,9 @@ public class MyServer {
 		if (root.getInt("mode") == 1) {
 			userNames.put(session.getId(),
 					root.getString("user"));
+			
+			
+			
 		}else if (root.getInt("mode") == 2) {
 			String mesg = root.getString("message");
 			
