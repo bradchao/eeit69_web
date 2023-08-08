@@ -15,7 +15,7 @@ import org.json.JSONObject;
 
 import netscape.javascript.JSObject;
 
-@ServerEndpoint(value = "/myserver")
+//@ServerEndpoint(value = "/myserver")
 public class MyServer {
 	private static HashSet<Session> sessions;
 	private static HashMap<String, Session> users;
