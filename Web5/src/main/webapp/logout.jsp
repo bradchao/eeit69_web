@@ -3,5 +3,5 @@
 <%
 	//session.setAttribute("lottery", null);
 	session.invalidate();
-	response.sendRedirect("brad50.jsp");
+	response.sendRedirect("login.html");
 %>

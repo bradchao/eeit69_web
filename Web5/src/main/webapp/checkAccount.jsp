@@ -24,6 +24,7 @@
 			Member member = new Member(rs.getInt("id"), 
 					rs.getString("account"), rs.getString("cname"), null);
 			session.setAttribute("member", member);
+			session.setMaxInactiveInterval(10*60);
 			response.sendRedirect("main.jsp");
 		}else{
 			session.invalidate();
